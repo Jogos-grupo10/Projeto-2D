@@ -15,7 +15,6 @@ public class PlayerAnimation : MonoBehaviour
     {
         Vector2 direction = PlayerMovement.movement;
         anim.SetFloat("dirX", direction.x);
-        anim.SetFloat("dirY", direction.y);
         anim.SetBool("Jump", PlayerMovement.jumping);
         anim.SetBool("Falling", !PlayerMovement.inGround);
     }

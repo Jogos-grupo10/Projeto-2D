@@ -1,45 +1,72 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Entity
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public int speed;
-    private Rigidbody2D player;
+    public float attackRange = 1f;
+    public float attackOffset = 0.5f;
+
     public static Vector2 movement;
-    public static bool jumping ;
+    public static bool jumping;
     public static bool inGround;
-    public int jumpForce;
+
+    public int jumpForce = 5;
+
     void Start()
     {
-        player = GetComponent<Rigidbody2D>();
-        speed = 5;
         jumping = false;
         inGround = true;
-        jumpForce = 5;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        
-        movement = new Vector2(moveHorizontal, moveVertical).normalized;
-        player.MovePosition(player.position + movement * speed * Time.deltaTime);
+        float moveX = Input.GetAxis("Horizontal");
+        float moveY = Input.GetAxis("Vertical");
+        movement = new Vector2(moveX, moveY);
+
+        Move(movement); 
+
         if (Input.GetButtonDown("Jump") && inGround)
         {
-            player.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             jumping = true;
             inGround = false;
         }
+
+        if (Input.GetMouseButtonDown(0) && attackCooldown.ElapsedTimeSec() > 0.5f)
+        {
+            Debug.Log("ok");
+            animator.SetTrigger("Attack");
+            attackCooldown.Restart();
+        }
     }
+
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Colidiu com: " + col.gameObject.tag);
         if (col.gameObject.CompareTag("Ground"))
         {
             inGround = true;
             jumping = false;
         }
+    }
+
+    public void CastAttackHitbox()
+    {
+        Vector2 hitboxPos = (Vector2)transform.position + new Vector2(transform.localScale.x * attackOffset, 0);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(hitboxPos, attackRange);
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.TryGetComponent(out Entity entity) && entity != this)
+            {
+                entity.TakeDamage(damage, (entity.transform.position - transform.position).normalized);
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Vector2 hitboxPos = (Vector2)transform.position + new Vector2(transform.localScale.x * attackOffset, 0);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(hitboxPos, attackRange);
     }
 }
