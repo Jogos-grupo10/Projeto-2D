@@ -53,18 +53,6 @@ TagManager:
   - name: Predio3
     uniqueID: 1504917423
     locked: 0
-  - name: Tile1
-    uniqueID: 1681834101
-    locked: 0
-  - name: Tile2
-    uniqueID: 4144999907
-    locked: 0
-  - name: Objects
-    uniqueID: 2389585221
-    locked: 0
-  - name: Player
-    uniqueID: 1157500133
-    locked: 0
   - name: Fog
     uniqueID: 2921955951
     locked: 0

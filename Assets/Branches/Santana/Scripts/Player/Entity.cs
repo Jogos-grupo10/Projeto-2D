@@ -64,7 +64,7 @@ public class Entity : MonoBehaviour
         rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, maxSpeed);
         rb.linearVelocity += knockbackVelocity * Time.deltaTime;
 
-        if (Mathf.Abs(rb.linearVelocity.x) < 0.1f) return;
+        if (Mathf.Abs(rb.linearVelocity.x) < 0.01f) return;
         transform.localScale = new Vector3(rb.linearVelocity.x < 0 ? -1 : 1, 1, 1);
     }
 }
