@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public class PlayerAnimation : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         Vector2 direction = PlayerMovement.movement;
-        anim.SetFloat("dirX", direction.x);
+        anim.SetFloat("dirX", Math.Abs(direction.x));
         anim.SetBool("Jump", PlayerMovement.jumping);
         anim.SetBool("Falling", !PlayerMovement.inGround);
     }
