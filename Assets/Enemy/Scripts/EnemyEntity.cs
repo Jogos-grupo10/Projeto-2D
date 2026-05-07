@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class EnemyEntity : MonoBehaviour
 {
-    private GameObject spike;
-    private GameObject enemy;
-    public int health;
+    public int maxHealth = 100;
+    private int health;
+    private Animator enemyAnim;
+
     void Start()
     {
-        
+        health = maxHealth;
+        enemyAnim = GetComponent<Animator>(); 
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
-        
-        Animator enemyAnim = enemy.GetComponent<Animator>();
-        
+
         if (enemyAnim != null)
         {
             enemyAnim.SetTrigger("Hurt");
@@ -23,9 +23,17 @@ public class EnemyEntity : MonoBehaviour
 
         if (health <= 0)
         {
-            enemyAnim.SetTrigger("Death");
-            Destroy(gameObject);
+            Die();
         }
     }
-    
+
+    private void Die()
+    {
+        if (enemyAnim != null)
+        {
+            enemyAnim.SetTrigger("Death");
+        }
+
+        Destroy(gameObject); 
+    }
 }

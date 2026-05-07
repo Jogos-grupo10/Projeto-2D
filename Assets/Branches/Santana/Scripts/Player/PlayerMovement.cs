@@ -34,6 +34,7 @@ public class PlayerMovement : Entity
 
         if (Input.GetMouseButtonDown(0) && attackCooldown.ElapsedTimeSec() > 0.5f)
         {
+            CastAttackHitbox();
             Debug.Log("ok");
             animator.SetTrigger("Attack");
             attackCooldown.Restart();

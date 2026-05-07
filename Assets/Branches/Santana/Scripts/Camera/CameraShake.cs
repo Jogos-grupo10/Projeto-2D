@@ -16,6 +16,7 @@ public class CameraShake : MonoBehaviour
 
     public void Shake(float magnitude)
     {
+        
         shakeMagnitude = magnitude;
         StopAllCoroutines();
         StartCoroutine(ShakeCoroutine());

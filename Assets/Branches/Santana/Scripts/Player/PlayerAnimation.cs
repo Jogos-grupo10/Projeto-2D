@@ -19,4 +19,5 @@ public class PlayerAnimation : MonoBehaviour
         anim.SetBool("Jump", PlayerMovement.jumping);
         anim.SetBool("Falling", !PlayerMovement.inGround);
     }
+    
 }

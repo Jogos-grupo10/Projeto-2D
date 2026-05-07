@@ -30,7 +30,8 @@ public class Entity : MonoBehaviour
     {
         if (damageCooldown.ElapsedTimeSec() < invincibilityDuration) return;
         damageCooldown.Restart();
-        CameraShake.Instance.Shake(shakeMagnitude);
+        if (CameraShake.Instance != null)
+            CameraShake.Instance.Shake(shakeMagnitude);
         health -= damage;
         StartCoroutine(DamageAnim());
         Knockback(direction, damage * knockbackForce);
@@ -59,12 +60,17 @@ public class Entity : MonoBehaviour
     public void Move(Vector2 direction)
     {
         knockbackVelocity *= friction;
-        rb.linearVelocity *= friction;
-        rb.linearVelocity += direction.normalized * speed * Time.deltaTime;
-        rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, maxSpeed);
-        rb.linearVelocity += knockbackVelocity * Time.deltaTime;
 
-        if (Mathf.Abs(rb.linearVelocity.x) < 0.01f) return;
-        transform.localScale = new Vector3(rb.linearVelocity.x < 0 ? -1 : 1, 1, 1);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x * friction, rb.linearVelocity.y);
+    
+        rb.linearVelocity += new Vector2(direction.x * speed * Time.deltaTime, 0);
+    
+        float clampedX = Mathf.Clamp(rb.linearVelocity.x, -maxSpeed, maxSpeed);
+        rb.linearVelocity = new Vector2(clampedX, rb.linearVelocity.y);
+    
+        rb.linearVelocity += new Vector2(knockbackVelocity.x * Time.deltaTime, 0);
+
+        if (Mathf.Abs(direction.x) > 0.01f)
+            transform.localScale = new Vector3(direction.x < 0 ? -1 : 1, 1, 1);
     }
 }
