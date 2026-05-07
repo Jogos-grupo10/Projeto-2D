@@ -327,15 +327,15 @@ MonoBehaviour:
   rb: {fileID: 252310470}
   health: 100
   damage: 10
-  speed: 5
-  maxSpeed: 10
+  speed: 20
+  maxSpeed: 20
   friction: 0.9
   invincibilityDuration: 0.5
   shakeMagnitude: 0.1
   knockbackForce: 5
   attackRange: 1
   attackOffset: 0.5
-  jumpForce: 0
+  jumpForce: 10
 --- !u!114 &252310476
 MonoBehaviour:
   m_ObjectHideFlags: 0
