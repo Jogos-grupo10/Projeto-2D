@@ -32,10 +32,9 @@ public class PlayerMovement : Entity
             inGround = false;
         }
 
-        if (Input.GetMouseButtonDown(0) && attackCooldown.ElapsedTimeSec() > 0.5f)
+        if (Input.GetMouseButtonDown(0) && attackCooldown.ElapsedTimeSec() > 0.2f)
         {
             CastAttackHitbox();
-            Debug.Log("ok");
             animator.SetTrigger("Attack");
             attackCooldown.Restart();
         }
