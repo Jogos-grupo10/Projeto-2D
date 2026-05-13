@@ -15,16 +15,18 @@ public class EnemyEntity : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-
-        if (enemyAnim != null)
-        {
-            enemyAnim.SetTrigger("Hurt");
-        }
-
+        
         if (health <= 0)
         {
             Die();
         }
+
+        else
+        {
+            enemyAnim.SetTrigger("Hurt");
+        }
+
+        
     }
 
     private void Die()
