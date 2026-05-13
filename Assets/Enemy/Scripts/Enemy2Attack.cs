@@ -7,6 +7,10 @@ public class Enemy2Attack : MonoBehaviour
     
     private Animator anim;
     private EnemyMovement movement;
+    
+    public GameObject projetilPrefab;
+    public Transform pontoSaida;
+
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -16,10 +20,10 @@ public class Enemy2Attack : MonoBehaviour
     void Update()
     {
         if (movement.target == null || movement.isAttacking) return;
-        
+    
         float distance = Vector2.Distance(transform.position, movement.target.position);
-        
-        if (distance <= movement.stopDistance || distance >= 5f) 
+    
+        if (Time.time >= nextAttackTime && distance <= 5f)
         {
             Attack();
             nextAttackTime = Time.time + attackCooldown;
@@ -29,7 +33,6 @@ public class Enemy2Attack : MonoBehaviour
     void Attack()
     {
         movement.isAttacking = true;
-        
         anim.ResetTrigger("Enemy2Attack");
         anim.SetTrigger("Enemy2Attack");
     }
@@ -37,5 +40,14 @@ public class Enemy2Attack : MonoBehaviour
     public void FinishAttackEffect()
     {
         movement.isAttacking = false;
+    }
+    
+    void Atirar()
+    {
+        if (projetilPrefab == null || pontoSaida == null) return;
+
+        Vector2 direcao = (movement.target.position - transform.position).normalized;
+        GameObject bala = Instantiate(projetilPrefab, pontoSaida.position, Quaternion.identity);
+        bala.GetComponent<Projetil>().Inicializar(direcao);
     }
 }
