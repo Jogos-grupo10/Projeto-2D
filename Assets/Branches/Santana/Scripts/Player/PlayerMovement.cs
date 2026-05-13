@@ -58,6 +58,7 @@ public class PlayerMovement : Entity
         {
             if (hit.TryGetComponent(out Entity entity) && entity != this)
             {
+                CameraShake.Instance.Shake(0.000001f);
                 entity.TakeDamage(damage, (entity.transform.position - transform.position).normalized);
             }
         }
