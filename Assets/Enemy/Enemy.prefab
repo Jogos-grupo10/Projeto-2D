@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 9099403781892244614}
   - component: {fileID: 5218727347918907071}
   - component: {fileID: 4236719126049244914}
-  - component: {fileID: 3757078897014467644}
   - component: {fileID: 4452619127966061468}
   - component: {fileID: 2888321999586439356}
   - component: {fileID: 6081997073732447038}
+  - component: {fileID: 8161389978093817569}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -135,33 +135,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAttack
   spike: {fileID: 6177307284141355939, guid: a7678002685099b428407ecdfab31374, type: 3}
   attackCooldown: 3
---- !u!114 &3757078897014467644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 908904106694211079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa71c392c515783418a8513e3efab860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  animator: {fileID: 5218727347918907071}
-  spriteRenderer: {fileID: 9099403781892244614}
-  rb: {fileID: 2888321999586439356}
-  health: 1000
-  damage: 10
-  speed: 2
-  maxSpeed: 10
-  friction: 0.9
-  invincibilityDuration: 0.5
-  shakeMagnitude: 0.1
-  knockbackForce: 5
-  target: {fileID: 0}
-  stopDistance: 1
-  movementDir: {x: 0, y: 0}
-  isAttacking: 0
 --- !u!114 &4452619127966061468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,6 +237,34 @@ PolygonCollider2D:
       - {x: -0.15625, y: -0.59375}
       - {x: -0.09375, y: -0.59375}
   m_UseDelaunayMesh: 1
+--- !u!114 &8161389978093817569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908904106694211079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27a0884ef97d5f4da1aa7d06e25c736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyEntity
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  rb: {fileID: 0}
+  health: 100
+  maxHealth: 100
+  damage: 10
+  speed: 5
+  maxSpeed: 10
+  friction: 0.9
+  invincibilityDuration: 0.5
+  shakeMagnitude: 0.1
+  knockbackForce: 5
+  target: {fileID: 0}
+  stopDistance: 1.5
+  movementDir: {x: 0, y: 0}
+  isAttacking: 0
 --- !u!1 &3296292704399914012
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ public class PlayerMovement : Entity
 {
     public float attackRange = 1f;
     public float attackOffset = 0.5f;
+    public float attackCooldownTime;
 
     public static Vector2 movement;
     public static bool jumping;
@@ -13,6 +14,7 @@ public class PlayerMovement : Entity
 
     void Start()
     {
+        attackCooldownTime = 0.1f;
         jumping = false;
         inGround = true;
     }
@@ -32,7 +34,7 @@ public class PlayerMovement : Entity
             inGround = false;
         }
 
-        if (Input.GetMouseButtonDown(0) && attackCooldown.ElapsedTimeSec() > 0.2f)
+        if (Input.GetMouseButtonDown(0) && attackCooldown.ElapsedTimeSec() > attackCooldownTime)
         {
             CastAttackHitbox();
             animator.SetTrigger("Attack");

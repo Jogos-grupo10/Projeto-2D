@@ -8,6 +8,7 @@ public class Entity : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D rb;
     public int health = 100;
+    public int maxHealth = 100;
     public int damage = 10;
     public float speed = 5f;
     public float maxSpeed = 10f;
@@ -26,7 +27,7 @@ public class Entity : MonoBehaviour
         damageCooldown.Restart();
     }
 
-    public void TakeDamage(int damage, Vector2 direction)
+    public virtual void TakeDamage(int damage, Vector2 direction)
     {
         if (damageCooldown.ElapsedTimeSec() < invincibilityDuration) return;
         damageCooldown.Restart();
@@ -52,7 +53,7 @@ public class Entity : MonoBehaviour
         knockbackVelocity = direction.normalized * force;
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         Destroy(gameObject, 0.1f);
     }

@@ -1,39 +1,62 @@
 using UnityEngine;
 
-public class EnemyEntity : MonoBehaviour
+public class EnemyEntity : Entity
 {
-    public int maxHealth = 100;
-    private int health;
-    private Animator enemyAnim;
+    public Transform target;
+    public float stopDistance = 1.5f;
+    
+    public Vector2 movementDir;
+    public bool isAttacking = false;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         health = maxHealth;
-        enemyAnim = GetComponent<Animator>(); 
+        invincibilityDuration = 0f;
+        animator = GetComponent<Animator>();
+
+        if (target == null) target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    public void TakeDamage(int damage)
+    void Update()
     {
-        health -= damage;
-
-        if (enemyAnim != null)
+        if (target == null || isAttacking)
         {
-            enemyAnim.SetTrigger("Hurt");
+            movementDir = Vector2.zero;
+            return;
         }
 
-        if (health <= 0)
+        float distance = Vector2.Distance(transform.position, target.position);
+
+        if (distance > stopDistance)
         {
-            Die();
+            movementDir = (target.position - transform.position).normalized;
+            rb.linearVelocity = new Vector2(movementDir.x * speed, rb.linearVelocity.y);
+
+            if (movementDir.x > 0.01f) transform.localScale = new Vector3(0.5f, 0.5f, 1);
+            else if (movementDir.x < -0.01f) transform.localScale = new Vector3(-0.5f, 0.5f, 1);
+        }
+        else
+        {
+            movementDir = Vector2.zero;
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
     }
 
-    private void Die()
+    public override void TakeDamage(int damage, Vector2 direction)
     {
-        if (enemyAnim != null)
-        {
-            enemyAnim.SetTrigger("Death");
-        }
+        base.TakeDamage(damage, direction);
 
-        Destroy(gameObject); 
+        if (animator != null)
+            animator.SetTrigger("Hurt");
+    }
+
+    protected override void Die()
+    {
+        if (animator != null)
+            animator.SetTrigger("Death");
+
+        Destroy(gameObject, 0.5f);
     }
 }
