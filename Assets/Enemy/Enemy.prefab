@@ -262,7 +262,7 @@ MonoBehaviour:
   shakeMagnitude: 0.1
   knockbackForce: 5
   target: {fileID: 0}
-  stopDistance: 1.5
+  stopDistance: 1
   movementDir: {x: 0, y: 0}
   isAttacking: 0
 --- !u!1 &3296292704399914012
