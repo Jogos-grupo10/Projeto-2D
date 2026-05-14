@@ -3,15 +3,13 @@ using UnityEngine;
 public class CameraShake : MonoBehaviour
 {
     public static CameraShake Instance { get; private set; }
-    private Vector3 originalPosition;
-    private float shakeDuration = .2f;
-    private float shakeMagnitude = 0.1f;
+    private float shakeDuration = .05f;
+    private float shakeMagnitude;
 
     private void Awake()
     {
         if (Instance != null) return;
         Instance = this;
-        originalPosition = transform.localPosition;
     }
 
     public void Shake(float magnitude)
@@ -27,12 +25,11 @@ public class CameraShake : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < shakeDuration)
         {
-            float x = Random.Range(-1f, 1f) * shakeMagnitude;
-            float y = Random.Range(-1f, 1f) * shakeMagnitude;
-            transform.localPosition = originalPosition + new Vector3(x, y, 0);
+            float x = Random.Range(-.5f, .5f) * shakeMagnitude;
+            float y = Random.Range(-.5f, .5f) * shakeMagnitude;
+            transform.localPosition += new Vector3(x, y, 0);
             elapsed += Time.deltaTime;
             yield return null;
         }
-        transform.localPosition = originalPosition;
     }
 }
