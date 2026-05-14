@@ -23,6 +23,7 @@ public class PlayerSpawn : MonoBehaviour
 
                 foreach (var vcam in virtualCameras)
                 {
+                    vcam.Follow = player.transform;
                     vcam.OnTargetObjectWarped(player.transform, delta);
                 }
             }

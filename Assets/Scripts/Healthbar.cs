@@ -11,6 +11,13 @@ public class Healthbar : MonoBehaviour
 
     public int healthPerHeart = 10;
 
+    void OnEnable()
+    {
+        GameObject playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null)
+            player = playerObj.GetComponent<Entity>();
+    }
+
     public void Start()
     {
         DrawHearts();
