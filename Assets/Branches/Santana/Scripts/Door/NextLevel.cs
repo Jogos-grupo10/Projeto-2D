@@ -8,12 +8,14 @@ public class NextLevel : MonoBehaviour
     public GameObject promptObject;
     public string sceneName;
     public float fadeDuration;
+    public string spawnID;
 
     private bool playerInRange = false;
     private Image fadeImage;
 
     void Start()
     {
+        Debug.Log("Script iniciou");
         fadeDuration= 1f;
         if (promptObject != null)
             promptObject.SetActive(false);
@@ -37,13 +39,24 @@ public class NextLevel : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.Return))
-            StartCoroutine(FadeAndLoad());
+        if (playerInRange)
+        {
+            Debug.Log("Player dentro da área");
+
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                Debug.Log("Tentando trocar de cena");
+                StartCoroutine(FadeAndLoad());
+            }
+        }
     }
 
     IEnumerator FadeAndLoad()
     {
         playerInRange = false;
+
+        SpawnManager.spawnID = spawnID;
+
         if (promptObject != null)
             promptObject.SetActive(false);
 
