@@ -6,9 +6,11 @@ public class Healthbar : MonoBehaviour
 {
     public GameObject heartPrefab;
     public Entity player;
-    
-    List<HealthHeart> hearts =  new List<HealthHeart>();
-    
+
+    List<HealthHeart> hearts = new List<HealthHeart>();
+
+    public int healthPerHeart = 10;
+
     public void Start()
     {
         DrawHearts();
@@ -17,11 +19,9 @@ public class Healthbar : MonoBehaviour
     public void DrawHearts()
     {
         ClearHearts();
-        
-        // how many hearts to make total
-        // based of max health
-        float maxHealthRemainder = player.maxHealth % 2;
-        int heartsToMake = (int)((player.maxHealth / 10) + maxHealthRemainder);
+
+        int heartsToMake = player.maxHealth / healthPerHeart;
+
         for (int i = 0; i < heartsToMake; i++)
         {
             CreateEmptyHeart();
@@ -29,22 +29,29 @@ public class Healthbar : MonoBehaviour
 
         for (int i = 0; i < hearts.Count; i++)
         {
-            int heartStatusRemainder = (int)Mathf.Clamp(player.health - i, 0, 1);
-            hearts[i].SetHeartImage((HeartStatus)heartStatusRemainder);
-        }
+            int currentHeartHealth = player.health - (i * healthPerHeart);
 
+            if (currentHeartHealth >= healthPerHeart)
+            {
+                hearts[i].SetHeartImage(HeartStatus.full);
+            }
+            else
+            {
+                hearts[i].SetHeartImage(HeartStatus.empty);
+            }
+        }
     }
-    
+
     public void CreateEmptyHeart()
     {
-        GameObject newHeart = Instantiate(heartPrefab);
-        newHeart.transform.SetParent(transform);
+        GameObject newHeart = Instantiate(heartPrefab, transform);
         
         HealthHeart heartComponent = newHeart.GetComponent<HealthHeart>();
         heartComponent.SetHeartImage(HeartStatus.empty);
+
         hearts.Add(heartComponent);
     }
-    
+
     public void ClearHearts()
     {
         foreach (Transform t in transform)

@@ -4467,6 +4467,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 265627134}
   rb: {fileID: 265627129}
   health: 20
+  maxHealth: 100
   damage: 10
   speed: 3
   maxSpeed: 10
@@ -4474,6 +4475,7 @@ MonoBehaviour:
   invincibilityDuration: 0.5
   shakeMagnitude: 0.1
   knockbackForce: 5
+  knockbackVelocity: {x: 0, y: 0}
   target: {fileID: 64228270}
   stopDistance: 1.5
   movementDir: {x: 0, y: 0}
@@ -4860,7 +4862,8 @@ Transform:
   m_LocalPosition: {x: 2.5728, y: -10.47, z: 0}
   m_LocalScale: {x: 16.065489, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 64228270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &492516701
@@ -6161,15 +6164,19 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 462161715}
     m_Modifications:
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.062245224
+      objectReference: {fileID: 0}
+    - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.53
+      value: -0.31762493
       objectReference: {fileID: 0}
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.46
+      value: 1.0100002
       objectReference: {fileID: 0}
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6181,15 +6188,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6223,6 +6230,10 @@ PrefabInstance:
       propertyPath: jumpForce
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 6700357891187570671, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6888015404358010813, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_SortingLayer
       value: 8
@@ -6234,7 +6245,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1978039214743858335, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2082096791}
   m_SourcePrefab: {fileID: 100100000, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
 --- !u!1 &837138078
 GameObject:
@@ -19410,7 +19424,7 @@ GameObject:
   - component: {fileID: 1389925040}
   - component: {fileID: 1389925039}
   - component: {fileID: 1389925038}
-  - component: {fileID: 1389925037}
+  - component: {fileID: 1389925041}
   m_Layer: 5
   m_Name: Healthbar
   m_TagString: Untagged
@@ -19434,24 +19448,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -225.38, y: 178.13}
+  m_AnchoredPosition: {x: -200, y: 150}
   m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1389925037
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389925035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a870fcee3016d1d4f99e7d3528726eee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Healthbar
-  heartPrefab: {fileID: 0}
-  health: {fileID: 0}
-  maxHealth: {fileID: 0}
 --- !u!114 &1389925038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19514,6 +19513,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389925035}
   m_CullTransparentMesh: 1
+--- !u!114 &1389925041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1389925035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a870fcee3016d1d4f99e7d3528726eee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Healthbar
+  heartPrefab: {fileID: 8125489420915961123, guid: 9175020c1ee20ba45a8feb6633638aa7, type: 3}
+  player: {fileID: 0}
 --- !u!1 &1420994556
 GameObject:
   m_ObjectHideFlags: 0
@@ -25352,6 +25365,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2082096784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1978039214743858335, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
+  m_PrefabInstance: {fileID: 822177314}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2082096791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2082096784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912d17db75f180a4e93d263befbbef90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Entity
+  animator: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  rb: {fileID: 0}
+  health: 20
+  maxHealth: 50
+  damage: 10
+  speed: 10
+  maxSpeed: 10
+  friction: 0.9
+  invincibilityDuration: 0.5
+  shakeMagnitude: 0.1
+  knockbackForce: 5
 --- !u!1 &2090219396
 GameObject:
   m_ObjectHideFlags: 0
@@ -25757,7 +25799,6 @@ SceneRoots:
   - {fileID: 945517820}
   - {fileID: 2054087843}
   - {fileID: 265627135}
-  - {fileID: 822177314}
   - {fileID: 462161715}
   - {fileID: 1530435037}
   - {fileID: 219632915}

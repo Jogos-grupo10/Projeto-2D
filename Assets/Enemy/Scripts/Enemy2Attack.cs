@@ -6,7 +6,7 @@ public class Enemy2Attack : MonoBehaviour
     private float nextAttackTime = 0f;
     
     private Animator anim;
-    private EnemyMovement movement;
+    private EnemyEntity movement;
     
     public GameObject projetilPrefab;
     public Transform pontoSaida;
@@ -14,7 +14,7 @@ public class Enemy2Attack : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        movement = GetComponent<EnemyMovement>();
+        movement = GetComponent<EnemyEntity>();
     }
     
     void Update()
