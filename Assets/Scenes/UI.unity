@@ -4338,7 +4338,6 @@ GameObject:
   - component: {fileID: 265627134}
   - component: {fileID: 265627133}
   - component: {fileID: 265627132}
-  - component: {fileID: 265627131}
   - component: {fileID: 265627130}
   - component: {fileID: 265627129}
   - component: {fileID: 265627128}
@@ -4451,35 +4450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d565af9c1994674195032d758645440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimation
---- !u!114 &265627131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265627127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa71c392c515783418a8513e3efab860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  animator: {fileID: 265627133}
-  spriteRenderer: {fileID: 265627134}
-  rb: {fileID: 265627129}
-  health: 20
-  maxHealth: 100
-  damage: 10
-  speed: 3
-  maxSpeed: 10
-  friction: 0.9
-  invincibilityDuration: 0.5
-  shakeMagnitude: 0.1
-  knockbackForce: 5
-  knockbackVelocity: {x: 0, y: 0}
-  target: {fileID: 64228270}
-  stopDistance: 1.5
-  movementDir: {x: 0, y: 0}
-  isAttacking: 0
 --- !u!114 &265627132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19527,6 +19497,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Healthbar
   heartPrefab: {fileID: 8125489420915961123, guid: 9175020c1ee20ba45a8feb6633638aa7, type: 3}
   player: {fileID: 0}
+  healthPerHeart: 10
 --- !u!1 &1420994556
 GameObject:
   m_ObjectHideFlags: 0
