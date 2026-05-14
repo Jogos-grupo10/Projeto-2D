@@ -42,6 +42,8 @@ public class EnemyEntity : Entity
             movementDir = Vector2.zero;
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
+
+        
     }
 
     public override void TakeDamage(int damage, Vector2 direction)
