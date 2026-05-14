@@ -4,12 +4,12 @@ using System;
 public class EnemyAnimation : MonoBehaviour
 {
     private Animator anim;
-    private EnemyMovement enemyMove;
+    private EnemyEntity enemyMove;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        enemyMove = GetComponent<EnemyMovement>();
+        enemyMove = GetComponent<EnemyEntity>();
     }
 
     void Update()

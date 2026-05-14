@@ -7,13 +7,15 @@ public class EnemyAttack : MonoBehaviour
     private float nextAttackTime = 0f;
 
     private Animator anim;
-    private EnemyMovement movement;
+    private EnemyEntity movement;
     private bool useStrong = false;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        movement = GetComponent<EnemyMovement>();
+        movement = GetComponentInParent<EnemyEntity>();
+        if (movement == null)
+            Debug.LogError("EnemyEntity não encontrado! Verifique a hierarquia.", this);
     }
 
     void Update()

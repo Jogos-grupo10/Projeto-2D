@@ -4570,7 +4570,6 @@ MonoBehaviour:
   sceneName: L1
   fadeDuration: 0
   spawnID: 1
---- !u!212 &446043377
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -6028,11 +6027,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.72
+      value: 5.9
       objectReference: {fileID: 0}
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.38
+      value: -9.3
       objectReference: {fileID: 0}
     - target: {fileID: 1930005712828959823, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6081,6 +6080,10 @@ PrefabInstance:
     - target: {fileID: 6700357891187570671, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: speed
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700357891187570671, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
+      propertyPath: friction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6700357891187570671, guid: 6a95eb9ba852aa9498eddf461c6d8779, type: 3}
       propertyPath: maxSpeed
@@ -8537,6 +8540,11 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!50 &935529617 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 2888321999586439356, guid: 49464c0e9e6cbd7499765e1457146278, type: 3}
+  m_PrefabInstance: {fileID: 6119026515342816034}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &943065944
 GameObject:
   m_ObjectHideFlags: 0
@@ -24763,7 +24771,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1942148418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25459,13 +25467,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3757078897014467644, guid: 49464c0e9e6cbd7499765e1457146278, type: 3}
       propertyPath: health
-      value: 10
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3757078897014467644, guid: 49464c0e9e6cbd7499765e1457146278, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 64228270}
-    m_RemovedComponents: []
+    - target: {fileID: 8161389978093817569, guid: 49464c0e9e6cbd7499765e1457146278, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 935529617}
+    m_RemovedComponents:
+    - {fileID: 3757078897014467644, guid: 49464c0e9e6cbd7499765e1457146278, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

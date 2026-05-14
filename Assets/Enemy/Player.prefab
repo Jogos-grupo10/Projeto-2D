@@ -208,15 +208,17 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6888015404358010813}
   rb: {fileID: 6335823986380805200}
   health: 100
+  maxHealth: 100
   damage: 10
-  speed: 5
-  maxSpeed: 10
-  friction: 0.9
+  speed: 20
+  maxSpeed: 20
+  friction: 0.5
   invincibilityDuration: 0.5
   shakeMagnitude: 0.1
   knockbackForce: 5
   attackRange: 1
   attackOffset: 0.5
+  attackCooldownTime: 0
   jumpForce: 0
 --- !u!114 &4114854846414186441
 MonoBehaviour:
