@@ -71,5 +71,8 @@ TagManager:
   - name: Fog
     uniqueID: 2921955951
     locked: 0
+  - name: Fogv2
+    uniqueID: 379440793
+    locked: 0
   m_RenderingLayers:
   - Default
